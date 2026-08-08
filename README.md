@@ -11,6 +11,7 @@ Grug make X posts talk simple. Grug use Chrome brain when Chrome have brain. No 
 - Give each post `Grug: on` or `Grug: off` button
 - Use fast basic Grug first, then Chrome local AI when ready
 - Keep post text on machine
+- No chew link, @name, #word, $rock. Grug know shiny rock not food
 
 ## Human install
 

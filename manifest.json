@@ -5,11 +5,11 @@
   "description": "Make X speak like Grug, powered by Chrome's on-device AI when available.",
   "permissions": ["storage", "offscreen"],
   "host_permissions": ["https://x.com/*", "https://twitter.com/*"],
-  "background": { "service_worker": "service-worker.js", "type": "module" },
+  "background": { "service_worker": "service-worker.js" },
   "action": { "default_title": "Grug X", "default_popup": "popup.html" },
   "content_scripts": [{
     "matches": ["https://x.com/*", "https://twitter.com/*"],
-    "js": ["content.js"],
+    "js": ["grug.js", "content.js"],
     "run_at": "document_idle"
   }]
 }

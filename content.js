@@ -145,17 +145,6 @@ function replaceText(element, text) {
   element.textContent = text;
 }
 
-function quickGrug(text) {
-  return text
-    .replace(/\bthe\b/gi, "da")
-    .replace(/\band\b/gi, "an")
-    .replace(/\byou\b/gi, "u")
-    .replace(/\byour\b/gi, "ur")
-    .replace(/\bvery\b/gi, "big")
-    .replace(/\bI am\b/gi, "me")
-    .replace(/\bI\b/g, "me");
-}
-
 function showStatus(engine, error) {
   let badge = document.querySelector("[data-grug-status]");
   if (!badge) {
