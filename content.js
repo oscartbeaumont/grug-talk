@@ -99,13 +99,17 @@ async function transform(element) {
 function ensurePostControls() {
   for (const article of document.querySelectorAll("article")) {
     if (article.querySelector("[data-grug-toggle]")) continue;
+    article.style.position = "relative";
+    const control = document.createElement("div");
+    control.dataset.grugControl = "";
+    control.style.cssText = "position:absolute;top:8px;right:52px;z-index:2;display:flex;align-items:center";
     const button = document.createElement("button");
     button.type = "button";
     button.dataset.grugToggle = "";
-    button.style.cssText = "margin:6px 0 2px;padding:3px 7px;border:1px solid #536471;border-radius:999px;background:transparent;color:#8b98a5;font:600 11px system-ui;cursor:pointer";
+    button.style.cssText = "display:grid;place-items:center;width:28px;height:28px;padding:0;border:0;border-radius:999px;background:rgb(22,24,28);color:rgb(29,155,240);font:15px system-ui;line-height:1;cursor:pointer;box-shadow:0 0 0 1px rgba(83,100,113,.55);transition:background .15s ease,color .15s ease";
     setToggleLabel(button, false);
-    // This sits after the tweet body so React's action bar remains untouched.
-    article.append(button);
+    control.append(button);
+    article.append(control);
   }
 }
 
@@ -137,8 +141,12 @@ function onToggleClick(event) {
 }
 
 function setToggleLabel(button, disabled) {
-  button.textContent = disabled ? "🦴 Grug: off" : "🦴 Grug: on";
+  button.textContent = "🦴";
   button.setAttribute("aria-pressed", String(!disabled));
+  button.setAttribute("aria-label", disabled ? "Enable Grug speak for this post" : "Disable Grug speak for this post");
+  button.title = disabled ? "Grug off — show normal words" : "Grug on — show cave words";
+  button.style.color = disabled ? "rgb(113,118,123)" : "rgb(29,155,240)";
+  button.style.background = disabled ? "transparent" : "rgb(22,24,28)";
 }
 
 function replaceText(element, text) {

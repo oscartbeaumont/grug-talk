@@ -18,7 +18,10 @@ async function ensurePool() {
   if (!poolPromise) {
     poolPromise = (async () => {
       if (typeof LanguageModel === "undefined") throw new Error("Chrome on-device AI is not enabled");
-      const availability = await LanguageModel.availability({ languages: ["en"] });
+      const availability = await LanguageModel.availability({
+        expectedInputLanguages: ["en"],
+        expectedOutputLanguages: ["en"]
+      });
       if (availability !== "available") throw new Error(`Chrome on-device AI is ${availability}`);
       await Promise.all(Array.from({ length: WORKER_COUNT }, createWorker));
     })();

@@ -7,7 +7,10 @@ enabled.addEventListener("change", () => chrome.storage.sync.set({ enabled: enab
 (async () => {
   try {
     if (typeof LanguageModel === "undefined") throw new Error("not exposed");
-    const state = await LanguageModel.availability({ languages: ["en"] });
+    const state = await LanguageModel.availability({
+      expectedInputLanguages: ["en"],
+      expectedOutputLanguages: ["en"]
+    });
     status.textContent = state === "available" ? "Chrome local AI ready. Grug think good." : `Chrome local AI: ${state}. Basic Grug mode will work.`;
   } catch {
     status.textContent = "Chrome local AI is off. Basic Grug mode will work.";
