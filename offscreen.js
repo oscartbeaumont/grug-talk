@@ -63,7 +63,3 @@ chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
 function cleanText(answer) {
   return answer.trim().replace(/^```(?:text)?\s*/i, "").replace(/\s*```$/i, "").trim();
 }
-
-function quickGrug(text) {
-  return text.replace(/\bthe\b/gi, "da").replace(/\band\b/gi, "an").replace(/\byou\b/gi, "u").replace(/\byour\b/gi, "ur").replace(/\bI\b/g, "me");
-}

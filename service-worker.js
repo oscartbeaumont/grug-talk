@@ -1,3 +1,5 @@
+importScripts("grug.js");
+
 const OFFSCREEN_URL = "offscreen.html";
 
 async function ensureOffscreenDocument() {
@@ -24,22 +26,9 @@ chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
     });
     sendResponse(response);
   })().catch((error) => sendResponse({
-    texts: message.texts.map(fallback),
+    texts: message.texts.map(quickGrug),
     engine: "fallback",
     error: error.message
   }));
   return true;
 });
-
-function fallback(text) {
-  return text
-    .replace(/\bthe\b/gi, "da")
-    .replace(/\band\b/gi, "an")
-    .replace(/\byou\b/gi, "u")
-    .replace(/\byour\b/gi, "ur")
-    .replace(/\bvery\b/gi, "big")
-    .replace(/\bplease\b/gi, "plz")
-    .replace(/\bhello\b/gi, "grug hello")
-    .replace(/\bI am\b/gi, "me")
-    .replace(/\bI\b/g, "me");
-}
