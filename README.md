@@ -4,6 +4,10 @@ Grug Talk is a dependency-free Manifest V3 Chrome extension that rewrites posts 
 
 It uses Chrome's built-in Prompt API (`LanguageModel`) when available, so post text stays on your device. If the local model is unavailable, the extension falls back to a small rule-based transformer that also runs entirely in the browser.
 
+## Screenshot
+
+![Grug Talk screenshot](screenshot.jpeg)
+
 ## Features
 
 - Rewrites visible posts on `x.com` and `twitter.com`
